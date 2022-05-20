@@ -1,0 +1,50 @@
+.stepWrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 10px;
+    border: 1px solid $light1;
+    box-shadow: 0 0 10px $light3;
+    padding: 10px;
+}
+
+.stepHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.stepHeaderItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 0;
+
+    span {
+        font-size: 14px;
+        font-weight: 400;
+        color: $dark0;
+    }
+
+    .icon {
+        font-size: 24px;
+        color: $dark2;
+    }
+
+    &.stepHeaderItemActive {
+        span {
+            color: $primary;
+        }
+
+        .icon {
+            color: $primary;
+        }
+    }
+}
+
+.stepBody {
+    padding: 20px;
+}

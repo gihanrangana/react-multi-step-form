@@ -1,45 +1,45 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import Steps from "./components/Steps/Steps";
+import CustomStep1 from "./groups/CustomSteps/CustomStep1";
+import CustomStep2 from "./groups/CustomSteps/CustomStep2";
+import useSteps from "./hooks/useSteps";
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
+    const steps = [
+        {
+            name: 'step1',
+            title: 'Step 1',
+            // component: 'Step 1 content',
+            component: <CustomStep1 />,
+        },
+        {
+            name: 'step2',
+            title: 'Step 2',
+            // component: 'Step 2 content',
+            component: <CustomStep2 />,
+        },
+        {
+            name: 'step3',
+            title: 'Step 3',
+            // component: 'Step 3 content',
+            render: () => <div>Step 3 content</div>,
+        }
+    ]
+
+    const stepGroup = useSteps(steps, 'step1');
+
+    return (
+        <div className="App">
+
+            <Steps {...stepGroup} settings={{
+                form: {
+                    submitButtonLabel: "Go to Next"
+                },
+                prevButton: false
+            }} />
+
+        </div>
+    )
 }
 
 export default App
